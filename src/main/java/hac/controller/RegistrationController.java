@@ -1,4 +1,4 @@
-package hac.conroller;
+package hac.controller;
 
 import hac.repo.Registration;
 import hac.repo.RegistrationRepository;
@@ -24,8 +24,22 @@ public class RegistrationController {
 
     @PostMapping
     public Registration createRegistration(@RequestBody Registration registration) {
-        return registrationRepository.save(registration);
+        try {
+            System.out.println("Received new registration: " + registration);
+
+            // Save the registration object to the database
+            Registration savedRegistration = registrationRepository.save(registration);
+
+            System.out.println("Saved registration: " + savedRegistration);
+            return savedRegistration;
+        } catch (Exception e) {
+            e.printStackTrace();
+            // You can log the exception or return an error response here if needed
+            return null;
+        }
     }
+
+
 
     // Add more API endpoints as needed (e.g., update, delete)
 }

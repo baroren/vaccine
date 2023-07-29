@@ -1,0 +1,52 @@
+/* Custom styles for the RegistrationForm */
+.registration-form {
+
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background-color: #f8f9fa;
+}
+
+.registration-form h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.registration-form label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.registration-form .form-control {
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+}
+
+.registration-form .form-check-label {
+    font-size: 16px;
+}
+
+.registration-form .form-check-input {
+    margin-right: 10px;
+}
+
+.registration-form .btn-primary {
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 30px;
+    margin-top: 20px;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.registration-form .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Customize form styles as needed */
