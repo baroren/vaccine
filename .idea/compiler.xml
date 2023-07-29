@@ -12,7 +12,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="demo" target="17" />
       <module name="react-spring" target="17" />
     </bytecodeTargetLevel>
   </component>

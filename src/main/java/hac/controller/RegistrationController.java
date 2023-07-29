@@ -25,7 +25,7 @@ public class RegistrationController {
     @PostMapping
     public Registration createRegistration(@RequestBody Registration registration) {
         try {
-            System.out.println("Received new registration: " + registration);
+            System.out.println("Received new registration: " + registration.toString());
 
             // Save the registration object to the database
             Registration savedRegistration = registrationRepository.save(registration);

@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Container} from "react-bootstrap";
 import axios from "axios";
+import SummaryPage from "./SummaryPage";
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
@@ -45,11 +46,11 @@ const RegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const jsonData = JSON.stringify(formData); // Convert to JSON string
-        console.log('JSON Data:', jsonData); // Log the JSON data
+        const jsonData = JSON.stringify(formData);// Convert to JSON string
+        console.log('JSON Data:::::::', jsonData); // Log the JSON data
         try {
             // Send the JSON data to the backend API
-            const response = await axios.post('/api/registrations', jsonData, {
+            const response = await axios.post('/api/registrations', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -60,6 +61,7 @@ const RegistrationForm = () => {
             console.error('Error creating registration:', error);
             // Handle error, show error message, etc.
         }
+        return <SummaryPage/>
     };
     return (
         <Container>

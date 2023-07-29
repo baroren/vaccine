@@ -11,49 +11,7 @@ const SummaryPage = () => {
         city: '',
     };
 
-   const [registrations, setRegistrations] = useState([
-        // Sample registration data (replace this with actual data from the backend)
-        {
-            id: 1,
-            firstName: 'John',
-            lastName: 'Doe',
-            dateOfBirth: '1990-05-15',
-            address: '123 Main Street',
-            city: 'New York',
-            zipCode: '10001',
-            landline: '123-456-7890',
-            cellPhone: '987-654-3210',
-            infected: false,
-            conditions: ['Diabetes', 'Allergies'],
-        },
-        {
-            id: 1,
-            firstName: 'John',
-            lastName: 'Doe',
-            dateOfBirth: '1990-05-15',
-            address: '123 Main Street',
-            city: 'Jerusalem',
-            zipCode: '10001',
-            landline: '123-456-7890',
-            cellPhone: '987-654-3210',
-            infected: false,
-            conditions: ['Diabetes', 'Allergies'],
-        },
-        {
-            id: 1,
-            firstName: 'John',
-            lastName: 'Doe',
-            dateOfBirth: '1990-05-15',
-            address: '123 Main Street',
-            city: 'Tel Aviv',
-            zipCode: '10001',
-            landline: '123-456-7890',
-            cellPhone: '987-654-3210',
-            infected: false,
-            conditions: ['Diabetes', 'Allergies'],
-        },
-        // Add more registration objects here...
-    ]);
+   const [registrations, setRegistrations] = useState([]);
 
     const [filteredRegistrations, setFilteredRegistrations] = useState(registrations);
     const [searchCriteria, setSearchCriteria] = useState(initialSearchCriteria);
@@ -62,6 +20,7 @@ const SummaryPage = () => {
         const fetchRegistrations = async () => {
             try {
                 const response = await axios.get('/api/registrations');
+                console.log("GET" , response.data);
                 setRegistrations(response.data);
             } catch (error) {
                 console.error('Error fetching registrations:', error);
@@ -167,6 +126,8 @@ const SummaryPage = () => {
                     <th>Cell Phone</th>
                     <th>Infected</th>
                     <th>Conditions</th>
+                    <th>More Details</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -182,7 +143,8 @@ const SummaryPage = () => {
                         <td>{registration.landline}</td>
                         <td>{registration.cellPhone}</td>
                         <td>{registration.infected ? 'Yes' : 'No'}</td>
-                        <td>{registration.conditions.join(', ')}</td>
+                        {<td>{registration.conditions.join(', ')}</td>}
+
                     </tr>
                 ))}
                 </tbody>
