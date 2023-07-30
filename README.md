@@ -1,37 +1,95 @@
 
 # Authors
-
+Bar Oren -206548752
+Maxim dunkel -321559775 
 # Explanations
 
 ---------------------
+Vaccination Portal Web Application
+Vaccination Portal
+
+Welcome to the Vaccination Portal web application! This application is designed to assist countries in efficiently managing COVID-19 vaccination registrations and prioritizing vaccination for vulnerable populations. It is built using React for the frontend, Spring Boot for the backend, and PostgreSQL for the database.
+
+How to Run the Application
+Clone this repository to your local machine.
+Set up the PostgreSQL database by executing the SQL scripts provided in the backend directory.
+Update the database configuration in the backend to match your PostgreSQL settings.
+Start the Spring Boot backend server.
+Install the required dependencies by running npm install in the frontend directory.
+Start the React frontend development server by running npm start.
+Access the application in your web browser at http://localhost:3000.
 
 
-# Initializing the template
 
-In order to initialize the project make sure to:
+## Running the Backend Server
 
-1. When you open the project, if intelliJ propose to "Load Maven Project" do it. You can later reload maven with the "M" icon on the right of the screen, or by right clicking on the pom.xml file and selecting "Maven -> Reload project".
-2. You see red lines in the code? Go to File -> Project Structure -> Project Settings -> Project -> SDK -> and choose your Java SDK
-3. Still see red stuff? Open the same dialog and click on "Fix" if you see some
-4. Edit your configuration "ex4" at the top right. Make sure the "Main class" is set to "hac.DemoApplication" and that Java is set
+1. Navigate to the backend directory of your cloned repository: `cd backend`.
 
-Everything ok?
-1. Run the SQL server as shown in the video (week 6) and create a database named "ex4". The DB credentials are stored in the application.properties file. You may change them if you want.
-2. Run the project, you should not see any errors in IntelliJ console
+2. Install the required dependencies using a package manager like Maven:
+   ```
+   mvn clean install
+   ```
 
-So far the only route you can check is http://localhost:8080/debug/purchases
-that returns a list of all purchases in the DB (empty for now).
+3. Make sure you have PostgreSQL installed and running on your system. Create a new database for the application. You can use the PostgreSQL command-line tools or a graphical interface like pgAdmin.
 
-## Initializing the React client (movie-app)
+4. Open the `application.properties` file located in `src/main/resources` folder. Update the following properties with your PostgreSQL database credentials:
 
-Open a terminal in *movie-app* and run `npm install` and then `npm start`. You should see the client running on http://localhost:3000.
-You can also open another instance of IntelliJ and open the *movie-app* folder as a project. You can then run the client from there.
+   ```
+   spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
+   spring.datasource.username=your_database_username
+   spring.datasource.password=your_database_password
+   ```
 
-## Using the provided code to store purchases in the DB
+5. Save the changes to the `application.properties` file.
 
-We provide you with ready-to-use code to store purchases in the DB, in order to give you a taste of what Spring can do for you.
-Look at the DebugController class. It has a method called "addPurchase" that receives a Purchase object and stores it in the DB.
-When you develop your own controller, you must declare the repository member exactly as it is declared in the DebugController class.
-Then you can use it to store purchases in the DB (repository.save(purchase)).
+6. Start the backend server by running the Spring Boot application:
+   ```
+   mvn spring-boot:run
+   ```
 
-## Still have problems? Come to class.
+   The backend server will now be running on `http://localhost:8080`.
+
+## Setting Up the PostgreSQL Database
+
+1. Make sure you have PostgreSQL installed and running on your system.
+
+2. Open a command-line tool or pgAdmin and log in with your PostgreSQL credentials.
+
+3. Create a new database for the Vaccination Portal application. You can use the following SQL command:
+
+   ```sql
+   CREATE DATABASE vaccination_portal;
+   ```
+
+4. Create a new table to store registration data. You can use the following SQL command:
+
+   ```sql
+   CREATE TABLE registration (
+       id SERIAL PRIMARY KEY,
+       first_name VARCHAR(100) NOT NULL,
+       last_name VARCHAR(100) NOT NULL,
+       date_of_birth DATE NOT NULL,
+       address VARCHAR(255) NOT NULL,
+       city VARCHAR(100) NOT NULL,
+       zip_code VARCHAR(20) NOT NULL,
+       landline VARCHAR(20),
+       cell_phone VARCHAR(20),
+       infected BOOLEAN NOT NULL,
+       conditions TEXT[],
+       other_condition VARCHAR(255)
+   );
+   ```
+
+5. The table is now ready to store registration data.
+
+6. If you have more entities and tables in your backend, repeat the steps above to create additional tables as needed.
+
+With the backend server running and the database set up, your Vaccination Portal web application is now ready to use. The frontend and backend will communicate to provide a seamless experience for users, allowing them to register for vaccinations and access relevant information about COVID-19 vaccines.
+
+Technologies Used
+React: Frontend development and user interface design.
+Spring Boot: Backend development and RESTful API implementation.
+PostgreSQL: Backend database management.
+Axios: For making HTTP requests between the frontend and backend.
+Bootstrap: Styling and responsive design.
+AI Tools: Integration of AI-powered chatbot to enhance user engagement
